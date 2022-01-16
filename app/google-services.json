@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "227393521627",
+    "firebase_url": "https://gargi-animal-care-default-rtdb.firebaseio.com",
+    "project_id": "gargi-animal-care",
+    "storage_bucket": "gargi-animal-care.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:227393521627:android:111ae0198f28095e6349fe",
+        "android_client_info": {
+          "package_name": "com.example.gargianimalcare"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "227393521627-qadj62cb4ge7l0rdi4f4a07n3jssloje.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.gargianimalcare",
+            "certificate_hash": "88a73af0d76430dbe42ff00d8446c70e54c142a4"
+          }
+        },
+        {
+          "client_id": "227393521627-er5a3p5o92m1it02cvdkflr10lko518g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAWML2losz6Cp1E-WnxZpNRqp04xGIY_C8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "227393521627-er5a3p5o92m1it02cvdkflr10lko518g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
