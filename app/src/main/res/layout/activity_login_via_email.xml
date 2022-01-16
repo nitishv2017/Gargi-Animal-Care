@@ -12,7 +12,7 @@
         android:id="@+id/loginEmailToolbar"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="@color/toolbar_login"
+        android:background="#FFF"
         android:elevation="10dp"
         >
 
@@ -21,7 +21,7 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:orientation="horizontal"
-            android:background="@color/toolbar_login"
+            android:background="#FFF"
             >
             <TextView
                 android:id="@+id/textView6"
@@ -30,17 +30,13 @@
                 android:layout_weight="1"
                 android:textStyle="normal"
                 android:text="@string/login_email_heading"
+                android:fontFamily="@font/signika_semibold"
+                android:textColor="@color/font_"
                 android:textSize="28dp"
                 android:paddingStart="0dp"
                 />
 
-            <Button
-                android:id="@+id/registerEmailBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/register"
-                android:layout_marginEnd="8dp"
-                />
+
 
         </LinearLayout>
     </com.google.android.material.appbar.MaterialToolbar>
@@ -67,10 +63,11 @@
             android:layout_height="wrap_content"
             android:focusable="true"
             android:focusableInTouchMode="true"
-            android:textColorHint="@color/colorPrimary"
+            android:textColorHint="@color/font_"
             android:layout_marginTop="14dp"
             android:paddingStart="35dp"
             android:paddingEnd="35dp"
+            android:theme="@style/TextInputLayoutAppearanceDifferent"
             >
 
             <com.google.android.material.textfield.TextInputEditText
@@ -78,6 +75,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="Email"
+                android:fontFamily="@font/signika_regular"
+                android:textColor="@color/font_"
                 android:ems="10"
                 android:inputType="textEmailAddress"
                 android:textSize="16sp"
@@ -91,10 +90,11 @@
             android:layout_height="wrap_content"
             android:focusable="true"
             android:focusableInTouchMode="true"
-            android:textColorHint="@color/colorPrimary"
+            android:textColorHint="@color/font_"
             android:layout_marginTop="14dp"
             android:paddingStart="35dp"
             android:paddingEnd="35dp"
+            android:theme="@style/TextInputLayoutAppearanceDifferent"
             >
 
             <com.google.android.material.textfield.TextInputEditText
@@ -102,6 +102,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="Password"
+                android:fontFamily="@font/signika_regular"
+                android:textColor="@color/font_"
                 android:ems="10"
                 android:inputType="textPassword"
                 android:textSize="16sp"
@@ -121,16 +123,6 @@
             android:layout_weight="1"
             />
         <TextView
-            android:id="@+id/textViewOr"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/textviewOR"
-            android:gravity="center"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            android:layout_weight="3"
-            />
-        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -141,11 +133,40 @@
             android:layout_weight="1"
             />
         <Button
+            android:id="@+id/proceedLogin"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="Log in"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:maxWidth="80dp"
+            android:maxHeight="80dp"
+            android:fontFamily="@font/signika_semibold"
+            android:textColor="@color/font_"
+            />
+
+        <TextView
+            android:id="@+id/textViewOr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="OR"
+            android:fontFamily="@font/signika_semibold"
+            android:textColor="@color/font_"
+            android:gravity="center"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_weight="3"
+            />
+
+
+        <Button
             android:id="@+id/loginWithPhone"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:text="@string/login_with_phone"
             android:gravity="center"
+            android:textColor="@color/font_"
+            android:fontFamily="@font/signika_semibold"
             android:layout_gravity="center"
             android:layout_weight="1"
             android:maxWidth="80dp"
@@ -159,16 +180,22 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:text="New user?"
+            android:fontFamily="@font/signika_light"
+            android:textColor="@color/font_"
+            android:textAlignment="center"
             />
         <Button
-            android:id="@+id/proceedLogin"
-            android:layout_width="match_parent"
+            android:id="@+id/registerEmailBtn"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:text="@string/proceed"
             android:layout_weight="1"
-            android:layout_gravity="bottom"
+            android:layout_gravity="center"
+            android:text="@string/register"
+            android:fontFamily="@font/signika_semibold"
+            android:textColor="@color/font_"
             />
+
 
 
     </LinearLayout>

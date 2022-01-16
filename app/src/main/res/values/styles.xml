@@ -3,9 +3,9 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">#30475E</item>
+        <item name="colorPrimaryDark">#121212</item>
+        <item name="colorAccent">#F05454</item>
     </style>
 
     <style name="Divider">
@@ -27,6 +27,11 @@
 
     <style name="customerPageBottomNavStyle">
         <item name="android:textSize">20sp</item>
+    </style>
+    <style name="TextInputLayoutAppearanceDifferent" parent="@style/ThemeOverlay.MaterialComponents">
+        <item name="colorOnSurface">@color/font_</item>
+        <item name="colorPrimary">@color/font_</item>
+        <item name="colorControlNormal">@color/font_</item>
     </style>
 
 </resources>

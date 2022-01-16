@@ -10,7 +10,7 @@
         android:id="@+id/OTPPageToolbar"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="@color/toolbar_login"
+        android:background="#FFF"
         android:elevation="10dp"
         >
 
@@ -19,7 +19,7 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:orientation="horizontal"
-            android:background="@color/toolbar_login"
+            android:background="#FFF"
             >
             <TextView
                 android:id="@+id/textViewOTP"
@@ -27,8 +27,10 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textStyle="normal"
-                android:text="@string/appName"
+                android:text="Gargi Animal Care"
                 android:textSize="28sp"
+                android:textColor="@color/font_"
+                android:fontFamily="@font/signika_semibold"
                 />
         </LinearLayout>
     </com.google.android.material.appbar.MaterialToolbar>
@@ -57,11 +59,13 @@
             android:id="@+id/textViewEnterOTP"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:textSize="16sp"
             android:text="@string/enter_OTP"
             android:gravity="center"
             android:layout_gravity="center"
             android:layout_weight="1"
+            android:textColor="@color/font_"
+            android:fontFamily="@font/signika_semibold"
             />
 
         <EditText
@@ -75,6 +79,9 @@
             android:layout_weight="0"
             android:importantForAutofill="no"
             android:hint="@null"
+            android:backgroundTint="@color/font_"
+            android:textColor="@color/font_"
+            android:fontFamily="@font/signika_light"
             />
         <TextView
             android:layout_width="match_parent"
@@ -121,23 +128,15 @@
             android:layout_weight="1"
             />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            />
         <Button
             android:id="@+id/submitLoginOTPBtn"
-            android:layout_width="match_parent"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:text="@string/submit_btn"
             android:layout_gravity="center"
             android:layout_weight="1"
+            android:textColor="@color/font_"
+            android:fontFamily="@font/signika_semibold"
             />
 
 

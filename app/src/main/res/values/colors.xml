@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimary">#30475E</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
 
@@ -24,5 +24,8 @@
     <color name="transaction_middle">#E9E9E9</color>
 
     <color name="transaction_sides">#F3F3F3</color>
+    <color name="purple_500">#A423BA</color>
+    <color name="font_">#FF415A6E</color>
+
 
 </resources>

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CreditInfo</string>
+    <string name="app_name">Gargi Animal Care</string>
 
     <!-- Slide 1 Title and description-->
     <string name="slide1_desc">Record transactions easily</string>
@@ -19,7 +19,7 @@
     <string name="todo3">TODO</string>
     <string name="skip1">Skip</string>
     <string name="next1">Next</string>
-    <string name="appName">CreditInfo</string>
+    <string name="appName">Gargi Animal Care</string>
     <string name="add_new_customer">Add New Customer</string>
     <string name="save_btn">Save</string>
     <string name="customerPage_uGaveBtn">You Gave  \u20B9</string>
