@@ -20,9 +20,6 @@ public class LoginViaPhone extends AppCompatActivity {
 
         setContentView(R.layout.activity_login_via_phone);
 
-        MaterialToolbar toolbar = (MaterialToolbar) findViewById(R.id.loginPhoneToolbar);
-        setSupportActionBar(toolbar);
-
         //call login with email activity
         Button bnLoginWithEmail = (Button) findViewById(R.id.loginWithEmail);
         bnLoginWithEmail.setOnClickListener(new View.OnClickListener() {
@@ -46,32 +43,7 @@ public class LoginViaPhone extends AppCompatActivity {
         });
 
 
-        //call PhoneOTPPage with proceed button
-        final EditText loginViaPhoneEditText  = findViewById(R.id.loginViaPhoneEditText);
 
-        Button proceedBtn = (Button) findViewById(R.id.phoneProceedBtn);
-        proceedBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                String number = loginViaPhoneEditText.getText().toString().trim();
-
-                if(number.isEmpty() || number.length() < 10 || number.length() > 10)
-                {
-                    loginViaPhoneEditText.setError("Enter the valid number");
-                    loginViaPhoneEditText.requestFocus();
-                    return;
-                }
-
-                    String numbers = "+" + "91" + number;
-                    Intent intent = new Intent(LoginViaPhone.this, PhoneOTPPage.class);
-                    intent.putExtra("phonenumber",numbers);
-
-                    startActivity(intent);
-                    finish();
-                }
-
-        });
 
     }
 
@@ -81,7 +53,7 @@ public class LoginViaPhone extends AppCompatActivity {
         FirebaseUser usr= FirebaseAuth.getInstance().getCurrentUser();
         if(usr!=null)
         {
-            Intent intent = new Intent(this,MainActivity.class);
+            Intent intent = new Intent(this,Home.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
         }

@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Gargi Animal Care</string>
 
+    <string name="google_map_api_key">AIzaSyD7IPGYRtVmEcXxzfs1rmEMCOiyTnOl4Zk</string>
+
     <!-- Slide 1 Title and description-->
     <string name="slide1_desc">Record transactions easily</string>
 

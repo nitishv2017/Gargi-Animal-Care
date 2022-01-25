@@ -44,7 +44,7 @@ public class RegistrationOTPPage extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        firebaseDatabase = FirebaseDatabase.getInstance("https://khatabook-clone-c56d6-default-rtdb.firebaseio.com/");
+        firebaseDatabase = FirebaseDatabase.getInstance("https://gargi-animal-care-default-rtdb.firebaseio.com/");
         reference = firebaseDatabase.getReference("users");
 
         registerPhoneOTPEditText = findViewById(R.id.registerPhoneOTPEditText);
@@ -54,8 +54,9 @@ public class RegistrationOTPPage extends AppCompatActivity {
         String phoneNumber = getIntent().getStringExtra("phonenumber");
         String email = getIntent().getStringExtra("email");
         String password  = getIntent().getStringExtra("password");
+        int flagCode  = getIntent().getIntExtra("flag",0);
 
-        helperClass = new UserHelperClass(username,businessname,phoneNumber,email,password);
+        helperClass = new UserHelperClass(username,businessname,phoneNumber,email,password,flagCode);
 
         eCredential = EmailAuthProvider.getCredential(email,password);
 
@@ -101,7 +102,7 @@ public class RegistrationOTPPage extends AppCompatActivity {
                                                 user = FirebaseAuth.getInstance().getCurrentUser();
                                                 reference.child(user.getUid()).setValue(helperClass);
 
-                                                Intent intent = new Intent(RegistrationOTPPage.this,MainActivity.class);
+                                                Intent intent = new Intent(RegistrationOTPPage.this,Home.class);
                                                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
                                                 startActivity(intent);

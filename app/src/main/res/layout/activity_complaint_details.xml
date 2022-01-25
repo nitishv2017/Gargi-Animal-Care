@@ -1,0 +1,541 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ComplaintDetails">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/det_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#FFF"
+        android:elevation="10dp"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:background="#FFF"
+            >
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:src="@drawable/ic_baseline_arrow_back_24"
+                android:layout_marginRight="16dp"
+                android:id="@+id/backbtn_details"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textStyle="normal"
+                android:text="Complaint details"
+                android:textSize="28sp"
+                android:textColor="@color/font_"
+                android:fontFamily="@font/signika_semibold"
+                />
+        </LinearLayout>
+    </com.google.android.material.appbar.MaterialToolbar>
+
+    <!--fragment to display our maps-->
+    <fragment xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/maps_details"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+         />
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="250dp"
+    android:layout_alignParentTop="true"
+    >
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/item_shape"
+        >
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="10dp"
+        android:backgroundTint="#E7F0F8"
+        android:elevation="5dp"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Details Submitted"
+                android:layout_marginBottom="8dp"
+                android:textSize="20sp"
+                android:textColor="@color/font_"
+                android:fontFamily="@font/signika_semibold"
+                />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="2dp"
+    android:orientation="horizontal">
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:text="Complaint ID"
+        android:textSize="16sp"
+        android:textColor="@color/font_"
+        android:fontFamily="@font/signika_semibold"
+        />
+    <TextView
+        android:layout_width="0dp"
+        android:layout_weight="1.5"
+        android:id="@+id/complaindID_det"
+        android:layout_height="wrap_content"
+        android:text="GAC000001"
+        android:textAlignment="center"
+        android:textColor="@color/font_"
+        android:fontFamily="@font/signika_regular"
+        android:background="@drawable/dotted_round_border"
+        />
+</LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="2dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Complained by"
+                    android:textSize="16sp"
+                    android:textColor="@color/font_"
+                    android:fontFamily="@font/signika_semibold"
+                    />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1.5"
+                    android:id="@+id/cust_name_det"
+                    android:layout_height="wrap_content"
+                    android:text="Nitish Vaishnav"
+                    android:textAlignment="center"
+                    android:textColor="@color/font_"
+                    android:fontFamily="@font/signika_regular"
+                    android:background="@drawable/dotted_round_border"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="2dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Time"
+                    android:textSize="16sp"
+                    android:textColor="@color/font_"
+                    android:fontFamily="@font/signika_semibold"
+                    />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1.5"
+                    android:id="@+id/timeofcom_det"
+                    android:layout_height="wrap_content"
+                    android:text="25/01/2000 13:12"
+                    android:textAlignment="center"
+                    android:textColor="@color/font_"
+                    android:fontFamily="@font/signika_regular"
+                    android:background="@drawable/dotted_round_border"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="2dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Phone number"
+                    android:textSize="16sp"
+                    android:textColor="@color/font_"
+                    android:fontFamily="@font/signika_semibold"
+                    />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1.5"
+                    android:id="@+id/phone_det"
+                    android:layout_height="wrap_content"
+                    android:text="+917790892316"
+                    android:textAlignment="center"
+                    android:textColor="@color/font_"
+                    android:fontFamily="@font/signika_regular"
+                    android:background="@drawable/dotted_round_border"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="2dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Subject"
+                    android:textSize="16sp"
+                    android:textColor="@color/font_"
+                    android:fontFamily="@font/signika_semibold"
+                    />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1.5"
+                    android:id="@+id/subject_det"
+                    android:layout_height="wrap_content"
+                    android:text="Bandar pareshan krr diye hai"
+                    android:textAlignment="center"
+                    android:textColor="@color/font_"
+                    android:fontFamily="@font/signika_regular"
+                    android:background="@drawable/dotted_round_border"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="2dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Description"
+                    android:textSize="16sp"
+                    android:textColor="@color/font_"
+                    android:fontFamily="@font/signika_semibold"
+                    />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1.5"
+                    android:id="@+id/description_det"
+                    android:layout_height="wrap_content"
+                    android:text="Bandar pareshan krr diye hai, Meri chat pe kapde chori hogye"
+                    android:textAlignment="center"
+                    android:textColor="@color/font_"
+                    android:fontFamily="@font/signika_regular"
+                    android:background="@drawable/dotted_round_border"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="2dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Address"
+                    android:textSize="16sp"
+                    android:textColor="@color/font_"
+                    android:fontFamily="@font/signika_semibold"
+                    />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1.5"
+                    android:id="@+id/address_det"
+                    android:layout_height="wrap_content"
+                    android:text="105, street no 3, baldev nagar, jodhpur, Rajasthan"
+                    android:textAlignment="center"
+                    android:textColor="@color/font_"
+                    android:fontFamily="@font/signika_regular"
+                    android:background="@drawable/dotted_round_border"
+                    />
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            app:cardCornerRadius="10dp"
+            android:id="@+id/status_card"
+            app:cardBackgroundColor="@color/status_pending"
+            android:elevation="5dp"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_margin="16dp"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1.5"
+                        android:layout_height="wrap_content"
+                        android:text="Status of Complaint"
+                        android:textSize="20sp"
+                        android:layout_marginBottom="8dp"
+                        android:textColor="@color/font_"
+                        android:fontFamily="@font/signika_semibold"
+                        />
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:gravity="right"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_baseline_pending1_outline_24"
+                            android:layout_marginHorizontal="4dp"
+                            android:id="@+id/icon_status_det"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:gravity="right"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/status_det"
+                            android:textSize="16sp"
+                            android:textColor="@color/font_"
+                            android:text="Pending"
+                            android:fontFamily="@font/signika_regular"
+                            />
+
+                    </LinearLayout>
+
+
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:id="@+id/status_employee_det"
+                    >
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="2dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="Employee Name"
+                            android:textSize="16sp"
+                            android:textColor="@color/font_"
+                            android:fontFamily="@font/signika_semibold"
+                            />
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1.5"
+                            android:id="@+id/emplName_det"
+                            android:layout_height="wrap_content"
+                            android:text="Ghanshyam das"
+                            android:textAlignment="center"
+                            android:textColor="@color/font_"
+                            android:fontFamily="@font/signika_regular"
+                            android:background="@drawable/dotted_round_border"
+                            />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="2dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="Phone number"
+                            android:textSize="16sp"
+                            android:textColor="@color/font_"
+                            android:fontFamily="@font/signika_semibold"
+                            />
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1.5"
+                            android:id="@+id/emplPhone_det"
+                            android:layout_height="wrap_content"
+                            android:text="+917789321652"
+                            android:textAlignment="center"
+                            android:textColor="@color/font_"
+                            android:fontFamily="@font/signika_regular"
+                            android:background="@drawable/dotted_round_border"
+                            />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="2dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="Solution Time"
+                            android:textSize="16sp"
+                            android:textColor="@color/font_"
+                            android:fontFamily="@font/signika_semibold"
+                            />
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1.5"
+                            android:id="@+id/timesolve_det"
+                            android:layout_height="wrap_content"
+                            android:text="27/01/2000 12:22"
+                            android:textAlignment="center"
+                            android:textColor="@color/font_"
+                            android:fontFamily="@font/signika_regular"
+                            android:background="@drawable/dotted_round_border"
+                            />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="2dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="Description"
+                            android:textSize="16sp"
+                            android:textColor="@color/font_"
+                            android:fontFamily="@font/signika_semibold"
+                            />
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1.5"
+                            android:id="@+id/desc_sol_det"
+                            android:layout_height="wrap_content"
+                            android:text="humne daboch liya unhe sir"
+                            android:textAlignment="center"
+                            android:textColor="@color/font_"
+                            android:fontFamily="@font/signika_regular"
+                            android:background="@drawable/dotted_round_border"
+                            />
+                    </LinearLayout>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="120dp"
+                        android:layout_height="40dp"
+                        app:cardCornerRadius="10dp"
+                        android:backgroundTint="#F05454"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        app:cardElevation="5dp"
+                        android:id="@+id/call_emp_det"
+                        android:layout_marginTop="8dp"
+                        android:layout_gravity="center"
+                        >
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="right"
+                            android:layout_gravity="center"
+                            android:layout_height="wrap_content">
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:src="@drawable/ic_baseline_call_24"
+                                android:layout_marginRight="4dp"
+
+                                />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:gravity="right"
+                                android:layout_height="wrap_content"
+                                android:textSize="20sp"
+                                android:textColor="#FFF"
+                                android:text="Call"
+                                android:fontFamily="@font/signika_regular"
+                                />
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            app:cardCornerRadius="10dp"
+            android:backgroundTint="#E7F0F8"
+            android:id="@+id/photosOpen_det"
+            android:elevation="5dp"
+            >
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+               >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Photos clicked"
+                    android:textSize="20sp"
+                    android:textColor="@color/font_"
+                    android:fontFamily="@font/signika_semibold"
+                    android:layout_centerVertical="true"
+                    />
+
+                <ImageView
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:src="@drawable/ic_baseline_arrow_forward_24"
+                    android:layout_alignParentRight="true"
+                    />
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+</ScrollView>
+
+</RelativeLayout>

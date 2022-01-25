@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginVertical="10dp"
+    android:elevation="10dp"
+    android:id="@+id/complainitem"
+    android:background="@drawable/item_shape">
+    <ImageView
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_baseline_pending1_outline_24"
+        android:layout_margin="16dp"
+        android:layout_alignParentRight="true"
+        android:id="@+id/icon_status_recycler"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Subject: Bandar bahut hore hai"
+            android:fontFamily="@font/signika_semibold"
+            android:textColor="@color/font_"
+            android:id="@+id/subject"
+            android:layout_margin="3dp"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="3dp"
+            android:id="@+id/complainid"
+            android:text="Complain id: GAC2022000001"
+            android:fontFamily="@font/signika_regular"
+            android:textColor="@color/font_"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="3dp"
+            android:id="@+id/time"
+            android:text="Time: 27, Jan 2022 12:25pm"
+            android:fontFamily="@font/signika_regular"
+            android:textColor="@color/font_"
+            />
+<TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="3dp"
+            android:id="@+id/status"
+            android:text="Satus: in process"
+            android:fontFamily="@font/signika_regular"
+            android:textColor="@color/font_"
+            />
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

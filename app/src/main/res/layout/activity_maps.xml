@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/maps_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#FFF"
+        android:elevation="10dp"
+        >
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:background="#FFF"
+            >
+
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:src="@drawable/ic_baseline_arrow_back_24"
+                android:layout_marginRight="16dp"
+                android:id="@+id/backbtn_map"/>
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textStyle="normal"
+                android:text="Choose location"
+                android:fontFamily="@font/signika_semibold"
+                android:textColor="@color/font_"
+                android:textSize="28dp"
+                android:paddingStart="0dp"
+                />
+
+
+
+        </LinearLayout>
+    </com.google.android.material.appbar.MaterialToolbar>
+
+    <!--fragment to display our maps-->
+    <fragment xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_marginTop="60dp"
+        android:layout_height="match_parent"
+        tools:context=".MapsActivity" />
+
+    <!--search view to search our location-->
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/idSearchView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="#FFF"
+        android:layout_alignTop="@+id/map"
+        android:elevation="5dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Light"
+        app:iconifiedByDefault="false"
+        app:queryHint="Search Here" />
+
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/currentLocation"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:background="@color/font_"
+        android:src="@drawable/ic_baseline_my_location_24"
+        android:layout_alignTop="@+id/idSearchView"
+        android:layout_marginTop="60dp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_alignParentRight="true"
+        />
+
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:id="@+id/proceed_loc"
+        android:text="Proceed"
+        android:background="@color/transaction_top"
+        android:fontFamily="@font/signika_semibold"
+        android:textColor="@color/font_"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="6dp"
+        android:layout_centerInParent="true"
+        />
+</RelativeLayout>

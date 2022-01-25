@@ -1,43 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddComplains"
+    android:background="@color/registration_Background">
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:id="@+id/progress_add"
+        android:layout_centerInParent="true"
+        />
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegistrationPage"
+    android:id="@+id/add_complain_view"
+    tools:context=".AddComplains"
     android:background="@color/registration_Background"
     android:orientation="vertical"
     >
 
     <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/registrationPageToolbar"
+        android:id="@+id/Addcomplaintoolbar"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="#FFF"
         android:elevation="10dp"
         >
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:background="#FFF"
-        >
-        <TextView
-            android:id="@+id/registrationHeading"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textStyle="normal"
-            android:text="@string/registration_Heading"
-            android:textSize="28sp"
-            android:textColor="@color/font_"
-            android:fontFamily="@font/signika_semibold"
-            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:background="#FFF"
+            >
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textStyle="normal"
+                android:text="Add complain"
+                android:textSize="28sp"
+                android:textColor="@color/font_"
+                android:fontFamily="@font/signika_semibold"
+                />
 
 
-    </LinearLayout>
+        </LinearLayout>
     </com.google.android.material.appbar.MaterialToolbar>
 
     <LinearLayout
@@ -46,30 +62,86 @@
         android:orientation="vertical"
         android:padding="30dp"
         >
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-        android:textColorHint="@color/font_"
-        android:theme="@style/TextInputLayoutAppearanceDifferent"
-        >
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/userName_registration"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:hint="Your Name"
-            android:textColor="@color/font_"
-            android:fontFamily="@font/signika_regular"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:textSize="16sp"
-            android:background="@color/registration_Background"
-            />
+            android:layout_height="wrap_content"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:textColorHint="@color/font_"
+            android:layout_marginTop="14dp"
+            android:theme="@style/TextInputLayoutAppearanceDifferent"
+            >
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/name_addcomplain"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Name of complainer"
+                android:textColor="@color/font_"
+                android:fontFamily="@font/signika_regular"
+                android:ems="10"
+                android:inputType="phone"
+                android:textSize="16sp"
+                android:background="@color/registration_Background"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:textColorHint="@color/font_"
+            android:layout_marginTop="14dp"
+            android:theme="@style/TextInputLayoutAppearanceDifferent"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/subject_add"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Subject"
+                android:textColor="@color/font_"
+                android:fontFamily="@font/signika_regular"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:textSize="16sp"
+                android:background="@color/registration_Background"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:textColorHint="@color/font_"
+            android:layout_marginTop="14dp"
+
+            android:theme="@style/TextInputLayoutAppearanceDifferent"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/description_add"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Describe your problem"
+                android:textColor="@color/font_"
+                android:fontFamily="@font/signika_regular"
+                android:ems="10"
+                android:gravity="top"
+                android:lines="4"
+                android:overScrollMode="always"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical"
+                android:inputType="textMultiLine"
+                android:textSize="16sp"
+                android:background="@color/registration_Background"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
 
 
@@ -84,7 +156,7 @@
             >
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/phoneNumber_registration"
+                android:id="@+id/phone_addcomplain"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="Phone Number"
@@ -109,102 +181,19 @@
             >
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/email_registration"
+                android:id="@+id/address_add"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="Email"
+                android:hint="Address"
+                android:gravity="top"
+                android:lines="4"
+                android:overScrollMode="always"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical"
+                android:inputType="textMultiLine"
                 android:textColor="@color/font_"
                 android:fontFamily="@font/signika_regular"
                 android:ems="10"
-                android:inputType="textEmailAddress"
-                android:textSize="16sp"
-                android:background="@color/registration_Background"
-                />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:textColorHint="@color/font_"
-            android:layout_marginTop="14dp"
-            android:theme="@style/TextInputLayoutAppearanceDifferent"
-            >
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/password_registration"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="Password"
-                android:textColor="@color/font_"
-                android:fontFamily="@font/signika_regular"
-                android:ems="10"
-                android:inputType="textPassword"
-                android:textSize="16sp"
-                android:background="@color/registration_Background"
-                />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <RadioGroup
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:id="@+id/radio_grp"
-            android:layout_marginTop="10dp">
-            <RadioButton
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:id="@+id/customer_radio"
-                android:layout_height="wrap_content"
-                android:text="Customer"
-                android:fontFamily="@font/signika_regular"
-                android:textColor="@color/font_"
-                />
-            <RadioButton
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:id="@+id/admin_radio"
-                android:layout_height="wrap_content"
-                android:text="Admin"
-                android:fontFamily="@font/signika_regular"
-                android:textColor="@color/font_"
-                />
-            <RadioButton
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:id="@+id/employee_radio"
-                android:layout_height="wrap_content"
-                android:text="Employee"
-                android:fontFamily="@font/signika_regular"
-                android:textColor="@color/font_"
-                />
-
-        </RadioGroup>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:focusable="true"
-            android:visibility="invisible"
-            android:id="@+id/code_entry_view"
-            android:focusableInTouchMode="true"
-            android:textColorHint="@color/font_"
-            android:layout_marginTop="14dp"
-            android:theme="@style/TextInputLayoutAppearanceDifferent"
-            >
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/codeEnter"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="Entry code"
-                android:textColor="@color/font_"
-                android:fontFamily="@font/signika_regular"
-                android:ems="10"
-                android:inputType="text"
                 android:textSize="16sp"
                 android:background="@color/registration_Background"
                 />
@@ -212,33 +201,21 @@
         </com.google.android.material.textfield.TextInputLayout>
 
 
-        <Button
-            android:id="@+id/registrationBtn"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:maxWidth="80dp"
-            android:maxHeight="80dp"
-            android:text="@string/register"
-            android:layout_gravity="center"
-            android:textStyle="normal"
-            android:textColor="@color/font_"
-            android:fontFamily="@font/signika_semibold"
-            android:layout_marginTop="80dp"
-            />
+
+
+
+
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="30sp"
-            />
+            android:textSize="60sp"/>
 
         <Button
-            android:id="@+id/regLoginBtn"
+            android:id="@+id/registerComplain"
             android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_height="60dp"
             android:layout_gravity="center"
-            android:text="Go to login Page"
+            android:text="Register Complain"
             android:textStyle="normal"
             android:maxWidth="80dp"
             android:maxHeight="80dp"
@@ -248,3 +225,4 @@
 
     </LinearLayout>
 </LinearLayout>
+</RelativeLayout>

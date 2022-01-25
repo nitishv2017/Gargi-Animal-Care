@@ -4,14 +4,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RadioGroup;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class RegistrationPage extends AppCompatActivity {
-
+    RadioGroup radioGroup;
+    int flag_code=0;
+    TextInputLayout codeEntryView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,16 +31,43 @@ public class RegistrationPage extends AppCompatActivity {
                 finish();
             }
         });
+        radioGroup=findViewById(R.id.radio_grp);
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                switch(i)
+                {
+                    case R.id.customer_radio:
+                        flag_code=0;
+                        removecodeView();
+                        // TODO Something
+                        break;
+                    case R.id.admin_radio:
+                        flag_code=1;
+                        enterCode(flag_code);
+                        // TODO Something
+                        break;
+                    case R.id.employee_radio:
+                        flag_code=2;
+                        enterCode(flag_code);
+                        // TODO Something
+                        break;
+                }
+            }
+        });
 
 
         //send form data to registration OTP page
-        final TextInputEditText phoneNumber,userName,businessName,email,password;
+        final TextInputEditText phoneNumber,userName,businessName,email,password,entryCode;
+
 
         userName = findViewById(R.id.userName_registration);
         businessName = findViewById(R.id.userName_registration);
         email = findViewById(R.id.email_registration);
         phoneNumber = findViewById(R.id.phoneNumber_registration);
         password = findViewById(R.id.password_registration);
+        entryCode=findViewById(R.id.codeEnter);
+        codeEntryView=findViewById(R.id.code_entry_view);
         findViewById(R.id.registrationBtn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -46,6 +77,14 @@ public class RegistrationPage extends AppCompatActivity {
                 String number = phoneNumber.getText().toString().trim();
                 String emails = email.getText().toString().trim();
                 String passwordn = password.getText().toString().trim();
+                String entryCoden=entryCode.getText().toString().trim();
+
+                if(entryCoden.isEmpty() && flag_code!=0)
+                {
+                    entryCode.setError("Entry code is required");
+                    entryCode.requestFocus();
+                    return;
+                }
 
                 if(username.isEmpty())
                 {
@@ -80,6 +119,22 @@ public class RegistrationPage extends AppCompatActivity {
                     password.requestFocus();
                     return;
                 }
+                if(flag_code!=0)
+                {
+                    if(flag_code==1 && entryCoden.equals("12345") )
+                    {
+                        ;
+                    }
+                    else if(flag_code==2 && entryCoden.equals("54321"))
+                    {
+                        ;
+                    }
+                    else {
+                        entryCode.setError("Enter valid entry code");
+                        entryCode.requestFocus();
+                        return;
+                    }
+                }
 
                 String numbers = "+" + "91" + number;
                 Intent intent = new Intent(RegistrationPage.this,RegistrationOTPPage.class);
@@ -88,11 +143,26 @@ public class RegistrationPage extends AppCompatActivity {
                 intent.putExtra("phonenumber",numbers);
                 intent.putExtra("email",emails);
                 intent.putExtra("password",passwordn);
+                intent.putExtra("flag",flag_code);
+
+
 
                 startActivity(intent);
                 finish();
             }
         });
+    }
+
+    private void removecodeView() {
+        codeEntryView.setVisibility(View.INVISIBLE);
+    }
+
+    private void enterCode(int flag) {
+        if(flag!=0)
+        {
+            codeEntryView.setVisibility(View.VISIBLE);
+        }
+
     }
 
     @Override

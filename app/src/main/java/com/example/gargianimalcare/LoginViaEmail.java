@@ -29,7 +29,7 @@ public class LoginViaEmail extends AppCompatActivity {
 
         firebaseAuth = FirebaseAuth.getInstance();
 
-        MaterialToolbar toolbar = (MaterialToolbar) findViewById(R.id.loginPhoneToolbar);
+        MaterialToolbar toolbar = (MaterialToolbar) findViewById(R.id.loginEmailToolbar);
         setSupportActionBar(toolbar);
 
         //call login with phone activity
@@ -86,7 +86,7 @@ public class LoginViaEmail extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     if(firebaseAuth.getCurrentUser().isEmailVerified()) {
-                                        Intent intent = new Intent(LoginViaEmail.this, MainActivity.class);
+                                        Intent intent = new Intent(LoginViaEmail.this, Home.class);
                                         startActivity(intent);
                                         finish();
                                     }

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="HardcodedText"
+    tools:show="navigation_view">
+
+    <item
+        android:icon="@drawable/ic_baseline_home_24"
+        android:id="@+id/nav_home"
+        android:onClick="home_navigate"
+        android:title="Home" />
+
+    <item
+        android:icon="@drawable/ic_baseline_account_circle_24"
+        android:id="@+id/nav_account"
+        android:onClick="account_navigate"
+        android:title="My Account" />
+
+    <item
+        android:icon="@drawable/ic_baseline_list_alt_24"
+        android:id="@+id/nav_all_c"
+        android:onClick="allC_navigate"
+        android:title="All Complaints Report" />
+
+    <item
+        android:icon="@drawable/ic_baseline_keyboard_arrow_left_24"
+        android:id="@+id/nav_logout"
+        android:onClick="logout_navigate"
+        android:title="Logout" />
+
+</menu>

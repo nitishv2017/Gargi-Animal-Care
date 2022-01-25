@@ -25,7 +25,10 @@
 
     <color name="transaction_sides">#F3F3F3</color>
     <color name="purple_500">#A423BA</color>
-    <color name="font_">#FF415A6E</color>
+    <color name="font_">#415A6E</color>
+    <color name="status_pending">#FFDCDC</color>
+    <color name="status_process">#FDF1B3</color>
+    <color name="status_completed">#B3FDBA</color>
 
 
 </resources>

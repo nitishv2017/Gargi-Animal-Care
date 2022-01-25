@@ -3,16 +3,26 @@ package com.example.gargianimalcare;
 public class UserHelperClass {
 
     String name,businessname,phonenumber,email,password;
+    int flag;
 
     public UserHelperClass() {
     }
 
-    public UserHelperClass(String name, String businessname, String phonenumber, String email, String password) {
+    public UserHelperClass(String name, String businessname, String phonenumber, String email, String password, int f) {
         this.name = name;
         this.businessname = businessname;
         this.phonenumber = phonenumber;
         this.email = email;
         this.password = password;
+        this.flag=f;
+    }
+
+    public int getFlag() {
+        return flag;
+    }
+
+    public void setFlag(int flag) {
+        this.flag = flag;
     }
 
     public String getName() {
