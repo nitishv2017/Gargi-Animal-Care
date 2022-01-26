@@ -15,7 +15,8 @@
         android:roundIcon="@mipmap/icon_app_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GargiAnimalCare">
-        <activity android:name=".Account_details"></activity>
+        <activity android:name=".ForgotPasswordActivity"></activity>
+        <activity android:name=".Account_details" />
         <activity android:name=".All_complaintsReport" />
         <activity android:name=".ComplaintDetails" />
 
