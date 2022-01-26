@@ -16,6 +16,7 @@ public class RegistrationPage extends AppCompatActivity {
     RadioGroup radioGroup;
     int flag_code=0;
     TextInputLayout codeEntryView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +27,7 @@ public class RegistrationPage extends AppCompatActivity {
         regLoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(RegistrationPage.this , LoginViaPhone.class);
+                Intent intent = new Intent(RegistrationPage.this , LoginViaEmail.class);
                 startActivity(intent);
                 finish();
             }
@@ -144,7 +145,6 @@ public class RegistrationPage extends AppCompatActivity {
                 intent.putExtra("email",emails);
                 intent.putExtra("password",passwordn);
                 intent.putExtra("flag",flag_code);
-
 
 
                 startActivity(intent);

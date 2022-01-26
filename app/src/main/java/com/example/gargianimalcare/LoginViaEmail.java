@@ -2,10 +2,13 @@ package com.example.gargianimalcare;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.text.TextUtils;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -14,12 +17,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginViaEmail extends AppCompatActivity {
 
     private FirebaseAuth firebaseAuth;
+    private TextView forgotlk;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,20 +33,11 @@ public class LoginViaEmail extends AppCompatActivity {
         setContentView(R.layout.activity_login_via_email);
 
         firebaseAuth = FirebaseAuth.getInstance();
+        forgotlk=findViewById(R.id.forgotLink);
 
         MaterialToolbar toolbar = (MaterialToolbar) findViewById(R.id.loginEmailToolbar);
         setSupportActionBar(toolbar);
 
-        //call login with phone activity
-        Button button = (Button) findViewById(R.id.loginWithPhone);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(LoginViaEmail.this,LoginViaPhone.class);
-                startActivity(intent);
-                finish();
-            }
-        });
 
         //call registration page
         Button registerEmailBtn = (Button) findViewById(R.id.registerEmailBtn);
@@ -108,6 +104,13 @@ public class LoginViaEmail extends AppCompatActivity {
                                 }
                             }
                         });
+            }
+        });
+
+        forgotlk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(LoginViaEmail.this,ForgotPasswordActivity.class));
             }
         });
 

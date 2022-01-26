@@ -98,6 +98,7 @@ public class RegistrationOTPPage extends AppCompatActivity {
                                         @Override
                                         public void onComplete(@NonNull Task<AuthResult> task) {
                                             if (task.isSuccessful()) {
+
                                                 Toast.makeText(RegistrationOTPPage.this, "Linking successful", Toast.LENGTH_LONG).show();
                                                 user = FirebaseAuth.getInstance().getCurrentUser();
                                                 reference.child(user.getUid()).setValue(helperClass);
