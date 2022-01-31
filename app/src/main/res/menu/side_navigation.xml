@@ -23,6 +23,12 @@
         android:title="All Complaints Report" />
 
     <item
+        android:icon="@drawable/ic_baseline_feedback_24"
+        android:id="@+id/feedback_all"
+        android:onClick="allC_feedback"
+        android:title="Feedback" />
+
+    <item
         android:icon="@drawable/ic_baseline_keyboard_arrow_left_24"
         android:id="@+id/nav_logout"
         android:onClick="logout_navigate"

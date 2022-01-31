@@ -211,6 +211,13 @@ public class Home extends AppCompatActivity {
         killActivity();
     }
 
+    public void allC_feedback(MenuItem item)
+    {
+        Intent j = new Intent(getApplicationContext(), Feedback.class);
+        startActivity(j);
+        killActivity();
+    }
+
     private void checkWritepermission()
     {
         Dexter.withContext(getApplicationContext())

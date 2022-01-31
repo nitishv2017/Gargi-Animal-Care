@@ -657,6 +657,13 @@ public class All_complaintsReport extends AppCompatActivity {
         drawerLayout.closeDrawer(GravityCompat.START);
     }
 
+    public void allC_feedback(MenuItem item)
+    {
+        Intent j=new Intent(getApplicationContext(),Feedback.class);
+        startActivity(j);
+        killActivity();
+    }
+
     public void  generatePDF(MenuItem item) throws IOException {
         ArrayList<complaintsHelperClass> data= tempArray;
 
