@@ -646,7 +646,7 @@ public class All_complaintsReport extends AppCompatActivity {
     }
     public void  account_navigate(MenuItem item)
     {
-        Intent j = new Intent(getApplicationContext(), All_complaintsReport.class);
+        Intent j = new Intent(getApplicationContext(), Account_details.class);
         startActivity(j);
         killActivity();
 

@@ -1,211 +1,193 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-        xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer_layout_acc"
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start"
+    tools:context=".Account_details"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="10dp"
-        android:elevation="10dp"
-        >
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            >
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_baseline_close_24"
-                android:layout_alignParentRight="true"
-                android:layout_margin="6dp"
-                />
+        android:layout_height="match_parent"
+        android:background="#FFF"
+        tools:context=".Account_details">
+
+        <include layout="@layout/actionbar_custom"/>
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/progress_acc"
+            android:layout_centerInParent="true"
+            android:visibility="invisible"
+            />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/details_acc"
+            android:padding="30dp"
             android:orientation="vertical">
-            <LinearLayout
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="center">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="85dp"
+            android:layout_height="85dp"
+            android:src="@color/font_"
+            android:layout_centerInParent="true"
+            />
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_baseline_perm_identity_24"/>
+
+    </RelativeLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="6dp"
-                android:orientation="horizontal">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_baseline_sort_24"
-                android:layout_margin="3dp"
-                />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Sort"
-                    android:layout_margin="3dp"
-                    android:textSize="16sp"
-                    android:fontFamily="@font/signika_semibold"
-                    android:textColor="@color/font_"
-                    />
-
-            </LinearLayout>
-
-
-            <RadioGroup
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:layout_marginTop="20dp"
+                android:textColorHint="@color/font_"
+                android:theme="@style/TextInputLayoutAppearanceDifferent"
                 >
 
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/signika_semibold"
-                    android:textColor="@color/font_"
-                    android:text="Date (newest first)"
-                    />
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/signika_semibold"
-                    android:textColor="@color/font_"
-                    android:text="Date (oldest first)"
-                    />
-            </RadioGroup>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="6dp"
-                android:orientation="horizontal">
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_baseline_filter_alt_24"
-                    android:layout_margin="3dp"
-                    />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Filter"
-                    android:layout_margin="3dp"
-                    android:textSize="16sp"
-                    android:fontFamily="@font/signika_semibold"
-                    android:textColor="@color/font_"
-                    />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal">
-                <EditText
-                    android:layout_height="wrap_content"
-                    android:layout_width="wrap_content"
-                    android:layout_margin="6dp"
-                    android:id="@+id/startDate"
-                    android:fontFamily="@font/signika_light"
-                    android:clickable="false"
-                    android:textSize="16sp"
-                    android:cursorVisible="false"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"
-                    android:hint="Start Date"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="-"
-                    android:textSize="20sp"/>
-
-                <EditText
-                    android:layout_height="wrap_content"
-                    android:layout_width="wrap_content"
-                    android:layout_margin="6dp"
-                    android:id="@+id/endDate"
-                    android:fontFamily="@font/signika_light"
-                    android:clickable="false"
-                    android:textSize="16sp"
-                    android:cursorVisible="false"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"
-                    android:hint="End Date"/>
-
-
-            </LinearLayout>
-
-            <RadioGroup
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <LinearLayout
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/userName_acc"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <RadioButton
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/signika_semibold"
-                        android:textColor="@color/font_"
-                        android:text="Pending"/>
-                    <RadioButton
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/signika_semibold"
-                        android:textColor="@color/font_"
-                        android:text="In process"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                <RadioButton
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/signika_semibold"
+                    android:layout_height="match_parent"
+                    android:hint="Your Name"
                     android:textColor="@color/font_"
-                    android:text="Completed"/>
-                <RadioButton
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/signika_semibold"
-                    android:textColor="@color/font_"
-                    android:text="All Complaints"/>
+                    android:fontFamily="@font/signika_regular"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:textSize="16sp"
+                    android:background="@color/registration_Background"
+                    />
 
-                </LinearLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
-            </RadioGroup>
-            <LinearLayout
+
+
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal">
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Apply"
-                    android:layout_margin="6dp"
-                    />
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="RESET ALL"
-                    android:layout_margin="6dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:textColorHint="@color/font_"
+                android:layout_marginTop="14dp"
+                android:theme="@style/TextInputLayoutAppearanceDifferent"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/phoneNumber_acc"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Phone Number"
+                    android:textColor="@color/font_"
+                    android:fontFamily="@font/signika_regular"
+                    android:ems="10"
+                    android:inputType="phone"
+                    android:textSize="16sp"
+                    android:background="@color/registration_Background"
                     />
 
-            </LinearLayout>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:textColorHint="@color/font_"
+                android:layout_marginTop="14dp"
+                android:theme="@style/TextInputLayoutAppearanceDifferent"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/email_acc"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Email"
+                    android:textColor="@color/font_"
+                    android:fontFamily="@font/signika_regular"
+                    android:ems="10"
+                    android:inputType="textEmailAddress"
+                    android:textSize="16sp"
+                    android:background="@color/registration_Background"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+            <Button
+                android:id="@+id/update_acc"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:maxWidth="80dp"
+                android:maxHeight="80dp"
+                android:text="UPDATE"
+                android:layout_gravity="center"
+                android:textStyle="normal"
+                android:textColor="@color/font_"
+                android:fontFamily="@font/signika_semibold"
+                android:layout_marginTop="80dp"
+                />
+
+            <Button
+                android:id="@+id/reset_password"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:maxWidth="80dp"
+                android:maxHeight="80dp"
+                android:text="RESET PASSWORD"
+                android:layout_gravity="center"
+                android:textStyle="normal"
+                android:textColor="@color/font_"
+                android:fontFamily="@font/signika_semibold"
+                android:layout_marginTop="30dp"
+                />
+
 
 
 
 
         </LinearLayout>
-        </RelativeLayout>
 
-    </androidx.cardview.widget.CardView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view_acc"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/navigation_sidebar"
+         />
+
+</androidx.drawerlayout.widget.DrawerLayout>

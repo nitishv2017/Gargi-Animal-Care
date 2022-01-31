@@ -6,7 +6,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/drawer_layout_allc"
     android:fitsSystemWindows="true"
-    tools:openDrawer="start"
     tools:context=".Home"
     xmlns:tools="http://schemas.android.com/tools">
 
