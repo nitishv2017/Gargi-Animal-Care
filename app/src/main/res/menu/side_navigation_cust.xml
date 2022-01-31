@@ -16,6 +16,11 @@
         android:onClick="account_navigate"
         android:title="My Account" />
 
+    <item
+        android:icon="@drawable/ic_baseline_feedback_24"
+        android:id="@+id/feedback_cust"
+        android:onClick="allC_feedback"
+        android:title="Feedback" />
 
     <item
         android:icon="@drawable/ic_baseline_keyboard_arrow_left_24"
