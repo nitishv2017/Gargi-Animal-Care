@@ -26,16 +26,37 @@
             android:id="@+id/progress_allc"
             android:layout_centerInParent="true"
             />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:id="@+id/emptyList_allc"
+            android:text="No complaints!"
+            android:fontFamily="@font/signika_light"
+            android:textSize="16sp"
+            android:textColor="@color/font_"
+            android:visibility="invisible"
+            />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/allComplaintsVisiblity_allc"
         android:orientation="vertical">
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/searchView_allc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:background="#FFF"
+            android:elevation="5dp"
+            android:layout_marginTop="65dp"
+            android:theme="@style/ThemeOverlay.AppCompat.Light"
+            app:iconifiedByDefault="false"
+            app:queryHint="Search by Complaint ID" />
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/allComplaintsView_allc"
-            android:layout_marginTop="60dp"
             android:visibility="invisible"
             />
 

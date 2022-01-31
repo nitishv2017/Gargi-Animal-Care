@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/registration_Background"
+    android:layout_height="match_parent">
+
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Update_Complaint"
+    android:background="@color/registration_Background">
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:id="@+id/progress_upd"
+        android:layout_centerInParent="true"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".Update_Complaint"
+        android:orientation="vertical"
+        >
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/Updatecomplaintoolbar"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="#FFF"
+            android:elevation="10dp"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:background="#FFF"
+                >
+                <ImageView
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:src="@drawable/ic_baseline_arrow_back_24"
+                    android:layout_marginRight="16dp"
+                    android:id="@+id/backbtn_upd"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textStyle="normal"
+                    android:text="Update Status"
+                    android:textSize="24sp"
+                    android:textColor="@color/font_"
+                    android:fontFamily="@font/signika_semibold"
+                    />
+
+
+            </LinearLayout>
+        </com.google.android.material.appbar.MaterialToolbar>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:id="@+id/upd_complain_view"
+            android:padding="30dp"
+            >
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:textColorHint="@color/font_"
+                android:layout_marginTop="14dp"
+                android:theme="@style/TextInputLayoutAppearanceDifferent"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/empname_update"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Employee Name"
+                    android:textColor="@color/font_"
+                    android:fontFamily="@font/signika_regular"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:textSize="16sp"
+                    android:background="@color/registration_Background"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:textColorHint="@color/font_"
+                android:layout_marginTop="14dp"
+                android:theme="@style/TextInputLayoutAppearanceDifferent"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/phone_updcomplain"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Phone Number"
+                    android:textColor="@color/font_"
+                    android:fontFamily="@font/signika_regular"
+                    android:ems="10"
+                    android:inputType="phone"
+                    android:textSize="16sp"
+                    android:background="@color/registration_Background"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginLeft="6dp"
+                android:id="@+id/status_group_upd"
+                android:layout_gravity="center"
+                android:checkedButton="@id/inprocess_upd"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:id="@+id/inprocess_upd"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/signika_semibold"
+                    android:textColor="@color/font_"
+                    android:text="In process"/>
+
+                <RadioButton
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:id="@+id/completed_upd"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/signika_semibold"
+                    android:textColor="@color/font_"
+                    android:text="Completed"/>
+
+
+
+            </RadioGroup>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/extradetails_upd"
+            android:orientation="vertical">
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:textColorHint="@color/font_"
+                android:theme="@style/TextInputLayoutAppearanceDifferent"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/time_upd"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Time"
+                    android:focusableInTouchMode="false"
+                    android:cursorVisible="false"
+                    android:clickable="false"
+                    android:textColor="@color/font_"
+                    android:fontFamily="@font/signika_regular"
+                    android:ems="10"
+                    android:gravity="top"
+                    android:scrollbars="vertical"
+                    android:inputType="time"
+                    android:textSize="16sp"
+                    android:background="@color/registration_Background"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:textColorHint="@color/font_"
+                android:layout_marginTop="14dp"
+                android:theme="@style/TextInputLayoutAppearanceDifferent"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/date_upd"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Date"
+                    android:textColor="@color/font_"
+                    android:fontFamily="@font/signika_regular"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:cursorVisible="false"
+                    android:clickable="false"
+                    android:ems="10"
+                    android:gravity="top"
+                    android:scrollbars="vertical"
+                    android:inputType="date"
+                    android:textSize="16sp"
+                    android:background="@color/registration_Background"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:textColorHint="@color/font_"
+                android:layout_marginTop="14dp"
+
+                android:theme="@style/TextInputLayoutAppearanceDifferent"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/description_sol_upd"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Describe Solution"
+                    android:textColor="@color/font_"
+                    android:fontFamily="@font/signika_regular"
+                    android:ems="10"
+                    android:gravity="top"
+                    android:lines="4"
+                    android:overScrollMode="always"
+                    android:scrollbarStyle="insideInset"
+                    android:scrollbars="vertical"
+                    android:inputType="textMultiLine"
+                    android:textSize="16sp"
+                    android:background="@color/registration_Background"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/uploadPhotosBtn"
+                android:layout_marginVertical="10dp"
+                android:layout_marginHorizontal="6dp"
+                android:elevation="3dp"
+                android:background="@drawable/item_shape"
+                >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="6dp"
+                    android:orientation="horizontal">
+
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_baseline_add_photo_alternate_24"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Add photos"
+                        android:fontFamily="@font/signika_semibold"
+                        android:textColor="@color/font_"
+                        android:textSize="16sp"
+                        android:layout_margin="6dp"
+                        />
+                </LinearLayout>
+
+            </RelativeLayout>
+        </LinearLayout>
+
+
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/signika_semibold"
+                android:textColor="@color/font_"
+                android:textSize="14sp"
+                android:layout_marginHorizontal="10dp"
+                />
+
+
+
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="10sp"/>
+
+            <Button
+                android:id="@+id/update_btn"
+                android:layout_width="250dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:text="Update"
+                android:textStyle="normal"
+                android:maxWidth="80dp"
+                android:maxHeight="80dp"
+                android:textColor="@color/font_"
+                android:fontFamily="@font/signika_semibold"
+                />
+
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>
+</ScrollView>

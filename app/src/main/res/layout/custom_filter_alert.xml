@@ -1,24 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:backgroundTint="#FFF"
+    app:cardCornerRadius="10dp"
+    android:elevation="10dp"
+    >
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="10dp"
-        android:elevation="10dp"
+        android:layout_height="match_parent"
         >
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            >
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_baseline_close_24"
-                android:layout_alignParentRight="true"
-                android:layout_margin="6dp"
-                />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/closeBtn_filter"
+            android:src="@drawable/ic_baseline_close_24"
+            android:layout_alignParentRight="true"
+            android:layout_margin="6dp"
+            />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -29,12 +31,12 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="6dp"
                 android:orientation="horizontal">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_baseline_sort_24"
-                android:layout_margin="3dp"
-                />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_baseline_sort_24"
+                    android:layout_margin="3dp"
+                    />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -52,9 +54,13 @@
             <RadioGroup
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="6dp"
+                android:id="@+id/sort_group"
+                android:checkedButton="@id/newDate_sort"
                 >
 
                 <RadioButton
+                    android:id="@+id/newDate_sort"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/signika_semibold"
@@ -63,6 +69,7 @@
                     />
 
                 <RadioButton
+                    android:id="@+id/oldDate_sort"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/signika_semibold"
@@ -70,6 +77,11 @@
                     android:text="Date (oldest first)"
                     />
             </RadioGroup>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_margin="6dp"
+                android:background="#888888" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -94,16 +106,44 @@
                     />
 
             </LinearLayout>
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/dates_group"
+                android:checkedButton="@id/allDates">
+                <RadioButton
+                    android:id="@+id/allDates"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/signika_semibold"
+                    android:textColor="@color/font_"
+                    android:text="All dates"
+                    />
+                <RadioButton
+                    android:id="@+id/customDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/signika_semibold"
+                    android:textColor="@color/font_"
+                    android:text="Select dates"
+                    >
+
+                </RadioButton>
+
+            </RadioGroup>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/customDateRangeview"
+                android:visibility="gone"
                 android:gravity="center"
                 android:orientation="horizontal">
                 <EditText
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:layout_margin="6dp"
+                    android:theme="@style/ThemeOverlay.AppCompat.Light"
                     android:id="@+id/startDate"
                     android:fontFamily="@font/signika_light"
                     android:clickable="false"
@@ -118,13 +158,15 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="-"
-                    android:textSize="20sp"/>
+                    android:textColor="@color/font_"
+                    android:textSize="24sp"/>
 
                 <EditText
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:layout_margin="6dp"
                     android:id="@+id/endDate"
+                    android:theme="@style/ThemeOverlay.AppCompat.Light"
                     android:fontFamily="@font/signika_light"
                     android:clickable="false"
                     android:textSize="16sp"
@@ -136,49 +178,51 @@
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_margin="6dp"
+                android:background="#888888" />
+
             <RadioGroup
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="6dp"
+                android:id="@+id/status_group"
+                android:checkedButton="@id/all_filter"
                 android:orientation="vertical">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+
                     <RadioButton
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
+                        android:id="@+id/pending_filter"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/signika_semibold"
                         android:textColor="@color/font_"
                         android:text="Pending"/>
                     <RadioButton
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:id="@+id/inprocess_filter"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/signika_semibold"
                         android:textColor="@color/font_"
                         android:text="In process"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                <RadioButton
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/signika_semibold"
-                    android:textColor="@color/font_"
-                    android:text="Completed"/>
-                <RadioButton
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/signika_semibold"
-                    android:textColor="@color/font_"
-                    android:text="All Complaints"/>
 
-                </LinearLayout>
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:id="@+id/completed_filter"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/signika_semibold"
+                        android:textColor="@color/font_"
+                        android:text="Completed"/>
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:id="@+id/all_filter"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/signika_semibold"
+                        android:textColor="@color/font_"
+                        android:text="All Complaints"/>
+
+
 
             </RadioGroup>
             <LinearLayout
@@ -186,16 +230,19 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:orientation="horizontal">
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Apply"
-                    android:layout_margin="6dp"
-                    />
+
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="RESET ALL"
+                    android:layout_margin="6dp"
+                    android:id="@+id/reset_btn_filter"
+                    />
+                <Button
+                    android:id="@+id/apply_filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Apply"
                     android:layout_margin="6dp"
                     />
 
@@ -205,7 +252,7 @@
 
 
         </LinearLayout>
-        </RelativeLayout>
+    </RelativeLayout>
 
-    </androidx.cardview.widget.CardView>
+</androidx.cardview.widget.CardView>
 

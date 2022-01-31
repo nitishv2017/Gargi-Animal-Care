@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -51,6 +52,14 @@ public class AddComplains extends AppCompatActivity {
          latitude=i.getDoubleExtra("latitude",0);
          longitude=i.getDoubleExtra("longitude",0);
 
+        ImageView backBtn=findViewById(R.id.backbtn_add);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+
         //initialize the objects
         firebaseAuth = FirebaseAuth.getInstance();
         currentUser = firebaseAuth.getCurrentUser();
@@ -60,9 +69,12 @@ public class AddComplains extends AppCompatActivity {
         //autofill
         name_add=findViewById(R.id.name_addcomplain);
 
+
         phone_add=findViewById(R.id.phone_addcomplain);
 
         address_add=findViewById(R.id.address_add);
+        subject_add= findViewById(R.id.subject_add);
+        description_add=findViewById(R.id.description_add);
 
         progressBar_add=findViewById(R.id.progress_add);
         fullView=findViewById(R.id.add_complain_view);
@@ -73,6 +85,44 @@ public class AddComplains extends AppCompatActivity {
         registerbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                String number = phone_add.getText().toString().trim();
+                String name = name_add.getText().toString().trim();
+                String address= address_add.getText().toString().trim();
+                String desc=description_add.getText().toString().trim();
+                String subject=subject_add.getText().toString().trim();
+
+                if(number.isEmpty() || number.length() < 10)
+                {
+                    phone_add.setError("Valid number is required");
+                    phone_add.requestFocus();
+                    return;
+                }
+                if(name.isEmpty())
+                {
+                    name_add.setError("Name is required");
+                    name_add.requestFocus();
+                    return;
+                }
+                if(address.isEmpty())
+                {
+                    address_add.setError("Address is required");
+                    address_add.requestFocus();
+                    return;
+                }
+                if(subject.isEmpty())
+                {
+                    subject_add.setError("Subject is required");
+                    subject_add.requestFocus();
+                    return;
+                }
+                if(desc.isEmpty())
+                {
+                    description_add.setError("Description is required");
+                    description_add.requestFocus();
+                    return;
+                }
+
 
                 alertDialogAndRegister();
 
@@ -143,30 +193,6 @@ public class AddComplains extends AppCompatActivity {
         // Show the Alert Dialog box
         alertDialog.show();
 
-//        builder.setView(confirmationView);
-//
-//
-//
-//        Button yes=confirmationView.findViewById(R.id.yes_confirm);
-//
-//        yes.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                generateComplaintIDandSave();
-//            }
-//        });
-//
-//        Button no=confirmationView.findViewById(R.id.no_confirm);
-//
-//        no.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                dialog.cancel();
-//            }
-//        });
-//
-//        dialog= builder.create();
-//        dialog.show();
     }
 
     private void generateUserHelper()
@@ -209,15 +235,11 @@ public class AddComplains extends AppCompatActivity {
                 ComplaintID+=temp;
 
                 Log.d("TAG", "id= " + ComplaintID);
-                subject_add= findViewById(R.id.subject_add);
-                description_add=findViewById(R.id.description_add);
+
                 long currentTime = System.currentTimeMillis() / 1000L;
 
-//                helperClass= new complaintsHelperClass(ComplaintID,currentUser.getUid(),currentTime,
-//                        user_details.getName(),user_details.getPhonenumber(), address,subject_add.getText().toString(),
-//                        description_add.getText().toString(), "pending","null",
-//                        "null","null",0,latitude,longitude);
-                helperClass= new complaintsHelperClass(address,ComplaintID,currentUser.getUid(),description_add.getText().toString(),"null","null","null","null",latitude,longitude,user_details.getPhonenumber(),"pending",subject_add.getText().toString(),currentTime,(long)0,currentUser.getUid());
+
+                helperClass= new complaintsHelperClass(address,ComplaintID,user_details.getName(),description_add.getText().toString(),"null","null","null","null",latitude,longitude,user_details.getPhonenumber(),"pending",subject_add.getText().toString(),currentTime,(long)0,currentUser.getUid());
 
                 reference.child(ComplaintID).setValue(helperClass);
                 Toast.makeText(AddComplains.this, "Your complain is registered.", Toast.LENGTH_SHORT).show();

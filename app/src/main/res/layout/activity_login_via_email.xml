@@ -95,6 +95,7 @@
             app:passwordToggleEnabled="true"
             android:paddingStart="35dp"
             android:paddingEnd="35dp"
+            app:passwordToggleTint="@color/font_"
             android:theme="@style/TextInputLayoutAppearanceDifferent"
             >
 
@@ -118,9 +119,12 @@
             android:layout_height="wrap_content"
             android:text="Forgot Password?"
             android:id="@+id/forgotLink"
-            android:layout_margin="10dp"
+            android:layout_marginVertical="10dp"
+            android:paddingEnd="35dp"
             android:gravity="right"
             android:layout_weight="1"
+            android:textColor="@color/font_"
+            android:fontFamily="@font/signika_light"
             />
         <TextView
             android:layout_width="match_parent"

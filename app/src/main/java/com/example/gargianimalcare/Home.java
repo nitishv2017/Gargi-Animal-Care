@@ -8,15 +8,20 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.Manifest;
 import android.content.Intent;
 import android.content.IntentSender;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.api.ApiException;
@@ -39,6 +44,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.karumi.dexter.Dexter;
+import com.karumi.dexter.PermissionToken;
+import com.karumi.dexter.listener.PermissionDeniedResponse;
+import com.karumi.dexter.listener.PermissionGrantedResponse;
+import com.karumi.dexter.listener.PermissionRequest;
+import com.karumi.dexter.listener.single.PermissionListener;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -54,23 +65,59 @@ public class Home extends AppCompatActivity {
     ProgressBar progressBar;
     //
     FirebaseDatabase firebaseDatabase;
-    DatabaseReference reference, ref1;
+    // initialize SharedPreferences var
+    SharedPreferences sharedPref;
+    DatabaseReference reference, mDatabaseRef;
     FirebaseUser currentUser;
     FirebaseAuth firebaseAuth;
+    Integer flag;
     ValueEventListener valueEventListener;
     ImageView statusIcon;
+    NavigationView navigationView;
+    TextView emptyText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_home);
+        navigationView=findViewById(R.id.nav_view);
+
 
         //initialize the objects
         firebaseAuth = FirebaseAuth.getInstance();
         currentUser = firebaseAuth.getCurrentUser();
         firebaseDatabase = FirebaseDatabase.getInstance("https://gargi-animal-care-default-rtdb.firebaseio.com/");
 
+        navigationView.getMenu().clear();
+        emptyText=findViewById(R.id.emptyList_home);
+
+        mDatabaseRef = FirebaseDatabase.getInstance("https://gargi-animal-care-default-rtdb.firebaseio.com/").getReference("users/"+currentUser.getUid());
+
+        mDatabaseRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                UserHelperClass u=dataSnapshot.getValue(UserHelperClass.class);
+                flag=u.getFlag();
+                if(flag==0)
+                    navigationView.inflateMenu(R.menu.side_navigation_cust);
+                else navigationView.inflateMenu(R.menu.side_navigation);
+                progressBar.setVisibility(View.INVISIBLE);
+                // get or create SharedPreferences
+                sharedPref = getSharedPreferences("myPref", MODE_PRIVATE);
+                // save your string in SharedPreferences
+                sharedPref.edit().putString("flagUser", flag.toString()).apply();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Toast.makeText(Home.this, databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+                progressBar.setVisibility(View.INVISIBLE);
+            }
+        });
+
         checkGPS();
+        checkWritepermission();
 
         MaterialToolbar toolbar = (MaterialToolbar) findViewById(R.id.loginEmailToolbar);
         setSupportActionBar(toolbar);
@@ -78,6 +125,7 @@ public class Home extends AppCompatActivity {
 
         drawerLayout=findViewById(R.id.drawer_layout);
         progressBar=findViewById(R.id.progress_home);
+        progressBar.setVisibility(View.VISIBLE);
 
 
          recyclerView= findViewById(R.id.allComplaintsView);
@@ -101,11 +149,20 @@ public class Home extends AppCompatActivity {
                      }
                  });
                  // Create adapter passing in the sample user data
-                 customerComplainAdapter adapter = new customerComplainAdapter(array_complains,Home.this);
+                 customerComplainAdapter adapter = new customerComplainAdapter(array_complains,Home.this,0);
                  // Attach the adapter to the recyclerview to populate items
                  recyclerView.setAdapter(adapter);
                  progressBar.setVisibility(View.GONE);
-                 recyclerView.setVisibility(View.VISIBLE);
+
+                 if(array_complains.size()==0)
+                 {
+                     emptyText.setVisibility(View.VISIBLE);
+                     recyclerView.setVisibility(View.INVISIBLE);
+                 }
+                 else {
+                     emptyText.setVisibility(View.INVISIBLE);
+                     recyclerView.setVisibility(View.VISIBLE);
+                 }
              }
          });
 
@@ -121,12 +178,9 @@ public class Home extends AppCompatActivity {
                  startActivity(i);
              }
          });
-
-
-
-
-
-
+    }
+    private void killActivity() {
+        finish();
     }
 
     public void  ClickedDrawer(View v)
@@ -138,7 +192,7 @@ public class Home extends AppCompatActivity {
         FirebaseAuth.getInstance().signOut();
         Intent j = new Intent(getApplicationContext(), LoginViaPhone.class);
         startActivity(j);
-        finish();
+        killActivity();
     }
     public void  home_navigate(MenuItem item)
     {
@@ -146,15 +200,55 @@ public class Home extends AppCompatActivity {
     }
     public void  account_navigate(MenuItem item)
     {
-        Intent j = new Intent(getApplicationContext(), All_complaintsReport.class);
+        Intent j = new Intent(getApplicationContext(), Account_details.class);
         startActivity(j);
-        finish();
+        killActivity();
     }
     public void  allC_navigate(MenuItem item)
     {
         Intent j = new Intent(getApplicationContext(), All_complaintsReport.class);
         startActivity(j);
-        finish();
+        killActivity();
+    }
+
+    private void checkWritepermission()
+    {
+        Dexter.withContext(getApplicationContext())
+                .withPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
+                .withListener(new PermissionListener() {
+                    @Override
+                    public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
+
+                    }
+
+                    @Override
+                    public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
+
+                    }
+
+                    @Override
+                    public void onPermissionRationaleShouldBeShown(PermissionRequest permissionRequest, PermissionToken permissionToken) {
+                        permissionToken.continuePermissionRequest();
+                    }
+                }).check();
+        Dexter.withContext(getApplicationContext())
+                .withPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                .withListener(new PermissionListener() {
+                    @Override
+                    public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
+
+                    }
+
+                    @Override
+                    public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
+
+                    }
+
+                    @Override
+                    public void onPermissionRationaleShouldBeShown(PermissionRequest permissionRequest, PermissionToken permissionToken) {
+                        permissionToken.continuePermissionRequest();
+                    }
+                }).check();
     }
 
 
@@ -176,6 +270,7 @@ public class Home extends AppCompatActivity {
 
                     callback.onAvailableCallback();
                 }
+                else emptyText.setVisibility(View.VISIBLE);
             }
 
             @Override
@@ -249,7 +344,25 @@ public class Home extends AppCompatActivity {
             }
         }
     }
+    boolean doubleBackToExitPressedOnce=false;
+    @Override
+    public void onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            moveTaskToBack(true);
+            android.os.Process.killProcess(android.os.Process.myPid());
+            System.exit(1);
+            return;
+        }
 
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
 
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
 
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce=false;
+            }
+        }, 2000);
+    }
 }

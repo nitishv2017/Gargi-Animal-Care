@@ -5,10 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ComplaintDetails">
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:id="@+id/progress_details"
+        android:layout_centerInParent="true"
+        />
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/det_toolbar"
         android:layout_width="match_parent"
+        android:theme="@style/ThemeOverlay.AppCompat.Light"
         android:layout_height="60dp"
         android:background="#FFF"
         android:elevation="10dp"
@@ -39,6 +47,12 @@
                 />
         </LinearLayout>
     </com.google.android.material.appbar.MaterialToolbar>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/fullView_details"
+    >
+
 
     <!--fragment to display our maps-->
     <fragment xmlns:tools="http://schemas.android.com/tools"
@@ -409,6 +423,7 @@
                         android:orientation="horizontal">
 
                         <TextView
+                            android:id="@+id/solTime_Label"
                             android:layout_width="0dp"
                             android:layout_weight="1"
                             android:layout_height="wrap_content"
@@ -437,6 +452,7 @@
                         android:orientation="horizontal">
 
                         <TextView
+                            android:id="@+id/desc_Label"
                             android:layout_width="0dp"
                             android:layout_weight="1"
                             android:layout_height="wrap_content"
@@ -537,5 +553,7 @@
 
     </LinearLayout>
 </ScrollView>
+
+</RelativeLayout>
 
 </RelativeLayout>

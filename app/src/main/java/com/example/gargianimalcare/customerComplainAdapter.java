@@ -6,6 +6,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -20,9 +22,50 @@ import java.util.Date;
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
 
-public class customerComplainAdapter extends RecyclerView.Adapter<customerComplainAdapter.ViewHolder> {
+public class customerComplainAdapter extends RecyclerView.Adapter<customerComplainAdapter.ViewHolder>  implements Filterable {
     Context c;
-    private ArrayList<complaintsHelperClass> localDataSet;
+    ArrayList<complaintsHelperClass> localDataSet, orig, defaultData;
+    int fromWhich;
+
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+
+            @Override
+            protected FilterResults performFiltering(CharSequence constraint) {
+                final FilterResults oReturn = new FilterResults();
+                final ArrayList<complaintsHelperClass> results = new ArrayList<complaintsHelperClass>();
+                if (orig == null)
+                    orig = localDataSet;
+                if (constraint == null || constraint.length() == 0) {
+                    oReturn.values = orig;
+                }
+                else if (constraint != null) {
+                    if (orig != null && orig.size() > 0) {
+                        for (final complaintsHelperClass g : orig) {
+                            if (g.getComplainID().toLowerCase()
+                                    .contains(constraint.toString()))
+                                results.add(g);
+                        }
+                    }
+                    oReturn.values = results;
+                }
+
+
+                return oReturn;
+            }
+
+            @SuppressWarnings("unchecked")
+            @Override
+            protected void publishResults(CharSequence constraint,
+                                          FilterResults results) {
+
+                localDataSet = (ArrayList<complaintsHelperClass>) results.values;
+                notifyDataSetChanged();
+            }
+        };
+    }
+
 
     /**
      * Provide a reference to the type of views that you are using
@@ -55,9 +98,11 @@ public class customerComplainAdapter extends RecyclerView.Adapter<customerCompla
     }
 
 
-    public customerComplainAdapter(ArrayList<complaintsHelperClass> data, Context context) {
-        localDataSet = data;
+    public customerComplainAdapter(ArrayList<complaintsHelperClass> data, Context context, int fr) {
+        defaultData = data;
+        localDataSet=data;
         c=context;
+        fromWhich=fr;
         Log.i(TAG, "customerComplainAdapter: ..."+data.size());
     }
 
@@ -89,7 +134,8 @@ public class customerComplainAdapter extends RecyclerView.Adapter<customerCompla
             @Override
             public void onClick(View view) {
                 Intent i= new Intent(c,ComplaintDetails.class);
-                i.putExtra("object",localDataSet.get(position));
+                i.putExtra("complainID",localDataSet.get(position).getComplainID());
+                i.putExtra("from", fromWhich);
                 c.startActivity(i);
             }
         });

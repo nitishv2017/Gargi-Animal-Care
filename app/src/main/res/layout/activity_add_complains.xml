@@ -41,13 +41,19 @@
             android:orientation="horizontal"
             android:background="#FFF"
             >
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:src="@drawable/ic_baseline_arrow_back_24"
+                android:layout_marginRight="16dp"
+                android:id="@+id/backbtn_add"/>
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textStyle="normal"
                 android:text="Add complain"
-                android:textSize="28sp"
+                android:textSize="24sp"
                 android:textColor="@color/font_"
                 android:fontFamily="@font/signika_semibold"
                 />
@@ -80,7 +86,7 @@
                 android:textColor="@color/font_"
                 android:fontFamily="@font/signika_regular"
                 android:ems="10"
-                android:inputType="phone"
+                android:inputType="textPersonName"
                 android:textSize="16sp"
                 android:background="@color/registration_Background"
                 />
