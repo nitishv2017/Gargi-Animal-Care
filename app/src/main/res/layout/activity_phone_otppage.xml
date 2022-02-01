@@ -21,14 +21,20 @@
             android:orientation="horizontal"
             android:background="#FFF"
             >
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:src="@drawable/ic_baseline_arrow_back_24"
+                android:layout_marginRight="16dp"
+                android:id="@+id/backbtn_phoneOTP"/>
             <TextView
                 android:id="@+id/textViewOTP"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textStyle="normal"
-                android:text="Gargi Animal Care"
-                android:textSize="28sp"
+                android:text="Phone OTP verification"
+                android:textSize="24sp"
                 android:textColor="@color/font_"
                 android:fontFamily="@font/signika_semibold"
                 />
@@ -105,7 +111,6 @@
             android:layout_weight="1"
             />
         <TextView
-            android:id="@+id/generateNewOTPBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -116,12 +121,6 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            />
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -139,6 +138,25 @@
             android:fontFamily="@font/signika_semibold"
             />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/signika_light"
+            android:textColor="@color/font_"
+            android:text="Not recieved OTP?"
+            android:textAlignment="center"
+            android:layout_marginTop="40dp"
+            />
+        <Button
+            android:id="@+id/generateNewOTPBtn"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="@string/generate_new_OTP"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:fontFamily="@font/signika_semibold"
+            android:textColor="@color/font_"
+            />
 
     </LinearLayout>
 

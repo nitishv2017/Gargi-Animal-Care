@@ -28,17 +28,16 @@
                 android:src="@drawable/ic_baseline_arrow_back_24"
                 android:layout_marginRight="16dp"
                 android:id="@+id/backbtn_map"/>
-
             <TextView
                 android:id="@+id/textView6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textStyle="normal"
-                android:text="Choose location"
+                android:text="Choose your location"
                 android:fontFamily="@font/signika_semibold"
                 android:textColor="@color/font_"
-                android:textSize="28dp"
+                android:textSize="24sp"
                 android:paddingStart="0dp"
                 />
 

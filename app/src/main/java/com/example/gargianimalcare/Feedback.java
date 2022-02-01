@@ -63,7 +63,7 @@ public class Feedback extends AppCompatActivity {
 
                 if(feedback.isEmpty())
                 {
-                    fdback.setError("Description is required");
+                    fdback.setError("Feedback cant be empty");
                     fdback.requestFocus();
                     return;
                 }
@@ -72,9 +72,8 @@ public class Feedback extends AppCompatActivity {
                 intent.setData(Uri.parse("mailto:"));
                 intent.putExtra(Intent.EXTRA_SUBJECT, "Regarding App Feedback");
                 intent.putExtra(Intent.EXTRA_TEXT, feedback);
-                if (intent.resolveActivity(getPackageManager()) != null) {
                     startActivity(intent);
-                }
+
             }
         });
     }

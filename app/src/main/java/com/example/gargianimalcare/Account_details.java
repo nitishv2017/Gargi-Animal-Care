@@ -55,8 +55,10 @@ public class Account_details extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         name_acc=findViewById(R.id.userName_acc);
+        name_acc.setEnabled(false);
         phone_acc=findViewById(R.id.phoneNumber_acc);
         email_acc=findViewById(R.id.email_acc);
+        email_acc.setEnabled(false);
         progressBar=findViewById(R.id.progress_acc);
         details_acc=findViewById(R.id.details_acc);
         update_acc=findViewById(R.id.update_acc);
@@ -92,6 +94,9 @@ public class Account_details extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                userHelperClass=dataSnapshot.getValue(UserHelperClass.class);
+
+               userHelperClass.setPhonenumber(userHelperClass.getPhonenumber().substring(3));
+
                 progressBar.setVisibility(View.INVISIBLE);
                 name_acc.setText(userHelperClass.getName());
                 phone_acc.setText(userHelperClass.getPhonenumber());
@@ -110,7 +115,32 @@ public class Account_details extends AppCompatActivity {
         update_acc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(phone_acc.getText().toString().equals(userHelperClass.getPhonenumber()))
+                {
+                    Toast.makeText(Account_details.this, "Already updated", Toast.LENGTH_SHORT).show();
+                }
+                else if(phone_acc.getText().toString().length()!=10 )
+                {
+                    phone_acc.setError("Valid number is required");
+                    phone_acc.requestFocus();
+                    return;
+                }
+                else if(phone_acc.getText().toString().length()==10 )
+                {
+                    Intent i=new Intent(Account_details.this, PhoneOTPPage.class);
+                    i.putExtra("phonenumber","+91"+phone_acc.getText().toString());
+                    startActivity(i);
+                }
 
+            }
+        });
+
+        resetPass_acc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i=new Intent(Account_details.this, ForgotPasswordActivity.class);
+                i.putExtra("flagFrom",1);
+                startActivity(i);
             }
         });
 
@@ -148,6 +178,14 @@ public class Account_details extends AppCompatActivity {
         startActivity(j);
         killActivity();
     }
+
+    public void allC_feedback(MenuItem item)
+    {
+        Intent j=new Intent(getApplicationContext(),Feedback.class);
+        startActivity(j);
+        killActivity();
+    }
+
     Boolean doubleBackToExitPressedOnce=false;
     @Override
     public void onBackPressed() {

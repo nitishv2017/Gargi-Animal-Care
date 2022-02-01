@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/drawer_layout_acc"
     android:fitsSystemWindows="true"
-    tools:openDrawer="start"
+
     tools:context=".Account_details"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -81,10 +81,26 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="+91"
+                    android:textSize="16sp"
+                    android:textColor="@color/font_"
+                    android:fontFamily="@font/signika_regular"
+
+                    />
 
 
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
+                android:layout_weight="9"
                 android:layout_height="wrap_content"
                 android:focusable="true"
                 android:focusableInTouchMode="true"
@@ -107,6 +123,7 @@
                     />
 
             </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -142,7 +159,7 @@
                 android:layout_weight="1"
                 android:maxWidth="80dp"
                 android:maxHeight="80dp"
-                android:text="UPDATE"
+                android:text="Update Phone number"
                 android:layout_gravity="center"
                 android:textStyle="normal"
                 android:textColor="@color/font_"

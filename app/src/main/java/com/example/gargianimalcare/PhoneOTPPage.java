@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -19,7 +20,10 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
+import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.concurrent.TimeUnit;
 
@@ -28,7 +32,12 @@ public class PhoneOTPPage extends AppCompatActivity {
     private String verificationID;
     private FirebaseAuth mAuth;
     private FirebaseUser currentUser;
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference reference;
     private EditText enterOTPEditText;
+    Button resendOTP;
+    ImageView backBtn;
+    String phoneNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,9 +46,30 @@ public class PhoneOTPPage extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser();
-        enterOTPEditText = findViewById(R.id.enterOTPEditText);
+        firebaseDatabase = FirebaseDatabase.getInstance("https://gargi-animal-care-default-rtdb.firebaseio.com/");
+        reference = firebaseDatabase.getReference("users");
 
-        String phoneNumber = getIntent().getStringExtra("phonenumber");
+        enterOTPEditText = findViewById(R.id.enterOTPEditText);
+        resendOTP=findViewById(R.id.generateNewOTPBtn);
+        backBtn=findViewById(R.id.backbtn_phoneOTP);
+
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+
+
+
+        phoneNumber = getIntent().getStringExtra("phonenumber");
+
+        resendOTP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sendVerificationCode(phoneNumber);
+            }
+        });
 
         sendVerificationCode(phoneNumber);
 
@@ -66,38 +96,49 @@ public class PhoneOTPPage extends AppCompatActivity {
     private void verifyCode(String code)
     {
         PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationID,code);
-        signInWithCredentials(credential);
+        updateCredentials(credential);
     }
 
-    private void signInWithCredentials(PhoneAuthCredential credential)
+    private void updateCredentials(PhoneAuthCredential credential)
     {
-        mAuth.signInWithCredential(credential)
-                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful())
-                        {
-                            Intent intent = new Intent(PhoneOTPPage.this,Home.class);
-                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                            startActivity(intent);
-                            finish();
-                        }else{
-                            Toast.makeText(PhoneOTPPage.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
-                        }
-                    }
-                });
+
+        currentUser.updatePhoneNumber(credential).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull  Task<Void> task) {
+                if(task.isSuccessful())
+                {
+                    reference.child(currentUser.getUid()+"/phonenumber").setValue(phoneNumber);
+                    Intent intent = new Intent(PhoneOTPPage.this,Account_details.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+                    finish();
+                }else{
+                    Toast.makeText(PhoneOTPPage.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+
     }
 
     private void sendVerificationCode(String number)
     {
-        PhoneAuthProvider.getInstance().verifyPhoneNumber(
-                number,
-                120,
-                TimeUnit.SECONDS,
-                this,
-                mCallBack
-
-        );
+//        PhoneAuthProvider.getInstance().verifyPhoneNumber(
+//                number,
+//                120,
+//                TimeUnit.SECONDS,
+//                this,
+//                mCallBack
+//
+//        );
+        PhoneAuthOptions options =
+                PhoneAuthOptions.newBuilder(mAuth)
+                        .setPhoneNumber(number)       // Phone number to verify
+                        .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
+                        .setActivity(this)                 // Activity (for callback binding)
+                        .setCallbacks(mCallBack)          // OnVerificationStateChangedCallbacks
+                        .build();
+        PhoneAuthProvider.verifyPhoneNumber(options);
     }
 
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks
@@ -120,7 +161,7 @@ public class PhoneOTPPage extends AppCompatActivity {
 
             if(code == null)
             {
-                signInWithCredentials(phoneAuthCredential);
+                updateCredentials(phoneAuthCredential);
             }
 
         }
